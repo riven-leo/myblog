@@ -1,5 +1,5 @@
 title = "呱的博客"
-theme = "hugo-theme-flat"
+theme = "hugo-theme-flat-main"
 themesDir = "../.."
 enableRobotsTXT = true
 hasCJKLanguage = true
