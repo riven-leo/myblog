@@ -1,4 +1,72 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = '呱的博客'
-theme = 'hugo-theme-flat'
+title = "呱的博客"
+theme = "hugo-theme-flat"
+themesDir = "../.."
+enableRobotsTXT = true
+hasCJKLanguage = true
+baseURL = ""
+
+[pagination]
+pagerSize = 4
+
+# these values are hugo built in markup config
+[markup.highlight]
+anchorLineNos = false
+codeFences = true
+guessSyntax = false
+hl_Lines = ''
+lineAnchors = ''
+lineNoStart = 1
+lineNos = false
+lineNumbersInTable = false
+noClasses = false
+noHl = false
+style = 'monokailight'
+tabWidth = 4
+
+[params]
+description = "呱的博客 | 记录思考和成长"
+mainSections = ['posts']
+
+## uncomment belows and set proper values to enable remark42
+# [params.remark42]
+# host=''
+# site_id=''
+# max_shown_comments=100
+# theme='light'
+# locale='en'
+# show_email_subscription=false
+# simple_view=true
+
+
+# [[params.footer_rows]]
+# [[params.footer_rows.items]]
+# url = "https://rivenleo.github.io/myblog"
+# pre = "Built with ❤️ and Hugo"
+
+[[menus.main]]
+name = "Posts"
+url = "/posts/"
+weight = 30
+
+[[menus.main]]
+name = "Essays"
+url = "/essays/"
+weight = 40
+
+[[menus.main]]
+pageref = "about"
+name = "About"
+weight = 80
+
+## 2-level sub menus are supported
+# [[menus.main]]
+# name = "Services"
+# weight = 60
+# [[menus.main]]
+# parent = "Services"
+# name = "Service A"
+# url = "#"
+# [[menus.main]]
+# parent = "Services"
+# name = "Service B"
+# url = "#"
