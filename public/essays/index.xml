@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Essays on 呱的博客</title>
+    <link>//localhost:1313/essays/</link>
+    <description>Recent content in Essays on 呱的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 18 May 2022 11:19:08 +0800</lastBuildDate><atom:link href="//localhost:1313/essays/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Add Picture In Blog</title>
+      <link>//localhost:1313/essays/add-picture-in-post/</link>
+      <pubDate>Tue, 24 Jan 2023 20:04:07 +0800</pubDate>
+      
+      <guid>//localhost:1313/essays/add-picture-in-post/</guid>
+      <description>&lt;p&gt;In this essay, we will talk about how to add a picture in blog.&lt;/p&gt;
+&lt;p&gt;There are many ways to add a picture, the one to use pure markdown syntax is &lt;code&gt;![](./path/to/picture)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Now I will show you a BIG picture (3600x2180):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./TEIDE.JPG&#34; alt=&#34;Big picture&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And a small picture (30x20):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./markdown-30x20.png&#34; alt=&#34;Small markdown mark&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Here is a inline markdown mark &lt;img src=&#34;./markdown-30x20.png&#34; alt=&#34;Small markdown mark&#34;&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
