@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on 呱的博客</title>
+    <link>//localhost:1313/about/</link>
+    <description>Recent content in Abouts on 呱的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 30 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About 呱</title>
+      <link>//localhost:1313/about/about/</link>
+      <pubDate>Thu, 30 Oct 2025 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/about/about/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;./wallhaven-yxgmll.webp&#34; alt=&#34;Haven&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关于我&#34;&gt;关于我： &lt;a href=&#34;#%e5%85%b3%e4%ba%8e%e6%88%91&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;呱~&lt;/p&gt;
+&lt;h2 id=&#34;联系我&#34;&gt;联系我： &lt;a href=&#34;#%e8%81%94%e7%b3%bb%e6%88%91&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;mailto:2895194843@qq.com&#34;&gt;2895194843@qq.com&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

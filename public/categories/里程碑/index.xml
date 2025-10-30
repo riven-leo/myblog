@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>呱的博客</title>
-    <link>//localhost:1313/</link>
-    <description>Recent content on 呱的博客</description>
+    <title>里程碑 on 呱的博客</title>
+    <link>//localhost:1313/categories/%E9%87%8C%E7%A8%8B%E7%A2%91/</link>
+    <description>Recent content in 里程碑 on 呱的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 30 Oct 2025 22:37:27 +0800</lastBuildDate><atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Oct 2025 20:47:53 +0800</lastBuildDate><atom:link href="//localhost:1313/categories/%E9%87%8C%E7%A8%8B%E7%A2%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>小小博客轻松拿下，呱!</title>
       <link>//localhost:1313/posts/%E5%B0%8F%E5%B0%8F%E5%8D%9A%E5%AE%A2/</link>
@@ -165,57 +165,6 @@
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;code&gt;这篇post发布意味着，博客基本框架已经搭好。在接下来的时间，还需要大量的时间来打磨和个性化，加油吧，呱~&lt;/code&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Beauty</title>
-      <link>//localhost:1313/essays/beauty/beauty/</link>
-      <pubDate>Thu, 30 Oct 2025 22:37:27 +0800</pubDate>
-      
-      <guid>//localhost:1313/essays/beauty/beauty/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;wallhaven-1ko3j9.webp&#34; alt=&#34;one&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;wallhaven-gpp7re.webp&#34; alt=&#34;two&#34;&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>接下来博客要实现的功能</title>
-      <link>//localhost:1313/posts/%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%8D%9A%E5%AE%A2%E8%A6%81%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD/</link>
-      <pubDate>Thu, 30 Oct 2025 21:41:00 +0800</pubDate>
-      
-      <guid>//localhost:1313/posts/%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%8D%9A%E5%AE%A2%E8%A6%81%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD/</guid>
-      <description>&lt;ol&gt;
-&lt;li&gt;加一个搜索框&lt;/li&gt;
-&lt;li&gt;加一个点赞按钮&lt;/li&gt;
-&lt;li&gt;加一个白天模式&lt;/li&gt;
-&lt;li&gt;加一个评论功能&lt;/li&gt;
-&lt;/ol&gt;</description>
-    </item>
-    
-    <item>
-      <title>Add Picture In Blog</title>
-      <link>//localhost:1313/essays/add-picture-in-post/</link>
-      <pubDate>Tue, 24 Jan 2023 20:04:07 +0800</pubDate>
-      
-      <guid>//localhost:1313/essays/add-picture-in-post/</guid>
-      <description>&lt;p&gt;In this essay, we will talk about how to add a picture in blog.&lt;/p&gt;
-&lt;p&gt;There are many ways to add a picture, the one to use pure markdown syntax is &lt;code&gt;![](./path/to/picture)&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Now I will show you a BIG picture (3600x2180):&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;./TEIDE.JPG&#34; alt=&#34;Big picture&#34;&gt;&lt;/p&gt;
-&lt;p&gt;And a small picture (30x20):&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;./markdown-30x20.png&#34; alt=&#34;Small markdown mark&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Here is a inline markdown mark &lt;img src=&#34;./markdown-30x20.png&#34; alt=&#34;Small markdown mark&#34;&gt;.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>写博客常用命令行</title>
-      <link>//localhost:1313/posts/%E5%86%99%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
-      <pubDate>Thu, 30 Oct 2025 21:24:57 +0800</pubDate>
-      
-      <guid>//localhost:1313/posts/%E5%86%99%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;发布前测试：hugo server -D&lt;/li&gt;
-&lt;li&gt;创建一个新的post：hugo new posts/名字.md&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     
   </channel>

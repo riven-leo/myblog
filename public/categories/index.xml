@@ -5,6 +5,16 @@
     <link>//localhost:1313/categories/</link>
     <description>Recent content in Categories on 呱的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Thu, 30 Oct 2025 20:47:53 +0800</lastBuildDate><atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>里程碑</title>
+      <link>//localhost:1313/categories/%E9%87%8C%E7%A8%8B%E7%A2%91/</link>
+      <pubDate>Thu, 30 Oct 2025 20:47:53 +0800</pubDate>
+      
+      <guid>//localhost:1313/categories/%E9%87%8C%E7%A8%8B%E7%A2%91/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
