@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+
+
+
+<title>小小博客轻松拿下，呱! | 呱的博客</title>
+<link rel="canonical" href="//localhost:1313/essays/%E5%B0%8F%E5%B0%8F%E5%8D%9A%E5%AE%A2/">
+<meta name="description" content="并非轻松" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="小小博客轻松拿下，呱! | 呱的博客" />
+<meta property="og:url" content="//localhost:1313/essays/%E5%B0%8F%E5%B0%8F%E5%8D%9A%E5%AE%A2/" />
+<meta property="og:description" content="并非轻松" />
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/icofont/icofont.min.css" />
+<link rel="stylesheet" href="/css/syntax.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<script src="/js/copy-code-block.js"></script>
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    </head>
+
+    <body>
+        <header class="header-wrapper">
+    <div class="header">
+        <a class="site-title" href="//localhost:1313/">呱的博客</a>
+
+        <nav class="menu">
+            
+                <div class="menu-item">
+                    
+                        <a href="/posts/">Posts</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/essays/">Essays</a>
+                    
+                </div>
+            
+                <div class="menu-item">
+                    
+                        <a href="/about/">About</a>
+                    
+                </div>
+            
+        </nav>
+    </div>
+</header>
+
+        <main class="main-wrapper">
+            <div class="main">
+                
+
+<section class="single">
+    <h1 class="title">小小博客轻松拿下，呱!</h1>
+
+    <div class="tip">
+        <time datetime="2025-10-30 20:47:53 &#43;0800 CST">2025/10/30</time>
+        <span class="split">·</span>
+        <span> 2207 words </span>
+        <span class="split">·</span>
+        <span>
+            5 minutes to read
+        </span>
+    </div>
+
+    <div class="taxonomies">
+        
+        <div>
+            Categories:
+            
+                <a href="/categories/%E9%87%8C%E7%A8%8B%E7%A2%91">里程碑</a>
+            
+        </div>
+        
+
+        
+            <div>
+                Tags:
+                
+                    <a href="/tags/hugo">hugo</a>
+                
+                    <a href="/tags/git">git</a>
+                
+                    <a href="/tags/github">github</a>
+                
+                    <a href="/tags/vscode">vscode</a>
+                
+            </div>
+        
+    </div>
+
+    <hr />
+
+    <div class="content">
+        <p>下面是用ai，根据整个构建博客的过程，生成的关于运用工具、实际流程、部分困难和解决方式的总结</p>
+<hr>
+<h1 id="一用到的工具与概念技术栈">一、用到的工具与概念（技术栈） <a href="#%e4%b8%80%e7%94%a8%e5%88%b0%e7%9a%84%e5%b7%a5%e5%85%b7%e4%b8%8e%e6%a6%82%e5%bf%b5%e6%8a%80%e6%9c%af%e6%a0%88" class="anchor">🔗</a></h1><ul>
+<li>Hugo（静态站点生成器，extended 版本用于 SCSS 支持）</li>
+<li>VS Code（主要开发环境，尽量用 GUI 操作 Git）</li>
+<li>Git / GitHub（代码与 Pages 托管、Actions CI）</li>
+<li>GitHub Actions（自动构建 + 部署到 Pages：actions/configure-pages、upload-pages-artifact、deploy-pages）</li>
+<li>Clash（用于解决本地 git HTTPS 连接的代理问题，使用 TUN 模式解决网络访问）</li>
+<li>主题：<code>hugo-theme-flat</code>（主题 + exampleSite）</li>
+<li>本地预览：<code>hugo server -D</code>（热重载）</li>
+<li>Front Matter / archetypes（文章模板与元数据）</li>
+<li>layouts/partials（自定义主题局部模板覆盖，例如 footer）</li>
+</ul>
+<hr>
+<h1 id="二主要步骤我们实际执行的流程">二、主要步骤（我们实际执行的流程） <a href="#%e4%ba%8c%e4%b8%bb%e8%a6%81%e6%ad%a5%e9%aa%a4%e6%88%91%e4%bb%ac%e5%ae%9e%e9%99%85%e6%89%a7%e8%a1%8c%e7%9a%84%e6%b5%81%e7%a8%8b" class="anchor">🔗</a></h1><ol>
+<li>
+<p>在 GitHub 建仓 <code>myblog</code>，在本地用 VS Code 打开工作目录。</p>
+</li>
+<li>
+<p>克隆或在本地初始化 Hugo 项目（<code>hugo new site .</code>；在遇到非空目录时使用 <code>--force</code> 或在子目录生成）。</p>
+</li>
+<li>
+<p>把选好的主题 <code>hugo-theme-flat</code> 放到 <code>themes/</code> 下（注意主题目录名要和 <code>config.toml</code> 里的 <code>theme</code> 一致）。</p>
+</li>
+<li>
+<p>复制主题内的 <code>exampleSite</code> 内容到站点根（<strong>推荐</strong>，快速得到 demo 配置、示例文章、static 资源和 config）。</p>
+</li>
+<li>
+<p>调整 <code>config.toml</code>：</p>
+<ul>
+<li><code>theme = &quot;hugo-theme-flat&quot;</code></li>
+<li>将 <code>themesDir</code> 修正为 <code>themes</code>（不要用 <code>../..</code> 导致路径向上跳转问题）</li>
+<li>修改 <code>title</code>、<code>description</code>、<code>menus</code>、<code>footer_rows</code> 等字段为自己的信息</li>
+</ul>
+</li>
+<li>
+<p>本地运行预览 <code>hugo server -D</code>，观察输出并调试：</p>
+<ul>
+<li>处理短代码缺少参数导致的错误（例如 <code>twitter_simple</code> 报错）——删除或修正示例文章。</li>
+<li>处理 Raw HTML、远程资源取回失败等 WARN（可忽略或通过配置关闭日志）。</li>
+</ul>
+</li>
+<li>
+<p>主题定制：</p>
+<ul>
+<li>不直接改主题源文件。若要覆盖，创建 <code>layouts/partials/footer.html</code> 放在项目根以覆盖默认 footer；针对 RSS 链接，删除对应代码段以移除底部的 Feed 链接。</li>
+<li>不用复制 <code>layouts/</code> 或 <code>archetypes/</code> 除非需要定制模板或文章模板。</li>
+</ul>
+</li>
+<li>
+<p>配置 <code>archetypes</code>：</p>
+<ul>
+<li>编写 <code>archetypes/default.md</code> / <code>archetypes/posts.md</code> / <code>archetypes/essays.md</code>，使用 <code>{{ .Date }}</code>、<code>{{ replace .Name &quot;-&quot; &quot; &quot; | title }}</code> 等占位使 <code>hugo new</code> 自动注入元数据。</li>
+<li>增加主题自定义字段（<code>weight</code>、<code>show_comments</code>、<code>katex</code> 等）以便控制排序、评论和公式显示。</li>
+</ul>
+</li>
+<li>
+<p>本地写作流程：</p>
+<ul>
+<li>在 <code>content/posts/</code>（项目总结）和 <code>content/essays/</code>（思考随笔）下创建 <code>.md</code> 文件并填 front matter（<code>title</code>、<code>date</code>、<code>tags</code>、<code>categories</code>、<code>draft</code>）。</li>
+<li>本地预览时用 <code>hugo server -D</code> 查看草稿。</li>
+</ul>
+</li>
+<li>
+<p>版本控制与部署：</p>
+<ul>
+<li>把 <code>.github/workflows/deploy.yml</code> 加入仓库，使用 GitHub Actions 自动构建与部署（我们采用 <code>actions/configure-pages</code> + <code>actions/upload-pages-artifact</code> + <code>actions/deploy-pages</code> 的官方流程）。</li>
+<li>workflow 中要注意：<code>--source ./</code>（指向站点根），<code>path: ./public</code>，指定 <code>HUGO_VERSION</code> 与是否需要安装 Dart Sass（如果主题不使用 SCSS，可以删掉 Dart Sass 步骤）。</li>
+<li>修正 workflow 中的 shell 写法（避免 <code>\</code> 续行缩进导致 <code>--minify: command not found</code>），最稳妥把 <code>hugo ...</code> 写成一行。</li>
+</ul>
+</li>
+<li>
+<p>推送与触发：</p>
+<ul>
+<li>在 VS Code 中 commit &amp; push 到 <code>main</code> 分支触发 Actions。Actions 成功后，Pages 从 <code>gh-pages</code> 分支或 GitHub Pages 的 settings 自动生效，站点上线。</li>
+</ul>
+</li>
+<li>
+<p>网络与 git 问题处理：</p>
+<ul>
+<li>遇到 <code>Failed to connect to github.com port 443</code>，开启 Clash 的 TUN 模式或给 Git 配置 http/https 代理，亦或使用 SSH remote URL（需配置 SSH key）来解决访问 GitHub 的不稳定问题。</li>
+<li>当本地与远程历史不同步且 push/pull 失败时，采用<strong>重新 clone 到新文件夹</strong>然后把本地修改（内容文件）复制到新 clone 的仓库再提交的安全流程，避免直接覆盖 <code>.git</code> 导致版本库损坏。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="三我们遇到的具体困难与解决办法详列">三、我们遇到的具体困难与解决办法（详列） <a href="#%e4%b8%89%e6%88%91%e4%bb%ac%e9%81%87%e5%88%b0%e7%9a%84%e5%85%b7%e4%bd%93%e5%9b%b0%e9%9a%be%e4%b8%8e%e8%a7%a3%e5%86%b3%e5%8a%9e%e6%b3%95%e8%af%a6%e5%88%97" class="anchor">🔗</a></h1><ol>
+<li>
+<p><strong><code>hugo new site .</code> 报错：目录非空</strong></p>
+<ul>
+<li>问题：Hugo 要求空目录或使用 <code>--force</code>。</li>
+<li>解决：用 <code>hugo new site . --force</code> 或在子目录运行 <code>hugo new site site/</code>。</li>
+</ul>
+</li>
+<li>
+<p><strong>主题没被识别：module not found / 名字与目录不匹配</strong></p>
+<ul>
+<li>问题：下载主题时文件夹名带 <code>-main</code> 或 config 里的 <code>theme</code> 名称不一致，或 <code>themesDir</code> 配置错误。</li>
+<li>解决：把主题文件夹重命名为 <code>hugo-theme-flat</code> 或把 <code>config.toml</code> 中 <code>theme</code> 改为实际文件夹名；把 <code>themesDir</code> 改回 <code>themes</code>。</li>
+</ul>
+</li>
+<li>
+<p><strong>短代码与 exampleSite 的错误导致构建失败</strong></p>
+<ul>
+<li>问题：示例文章用旧短代码或缺少参数（例如 <code>twitter_simple</code>），还有尝试远程抓取 Vimeo 报错。</li>
+<li>解决：删除 example 的示例文章或修正短代码；在构建时忽略相应 warn 或提供参数；删除或替换 example content。</li>
+</ul>
+</li>
+<li>
+<p><strong>PowerShell 显示 <code>//localhost:1313/</code> 且无法直接点击</strong></p>
+<ul>
+<li>问题：PowerShell 输出省略 <code>http:</code>，无法直接点击。</li>
+<li>解决：在浏览器地址栏输入 <code>http://localhost:1313/</code> 或在 <code>hugo server</code> 加 <code>-O</code> 自动打开浏览器。</li>
+</ul>
+</li>
+<li>
+<p><strong>Hugo 多行命令在 workflow 中报 <code>--minify: command not found</code></strong></p>
+<ul>
+<li>问题：YAML 多行续行加 <code>\</code> 且续行前有缩进会让 shell 把参数当成新命令。</li>
+<li>解决：把命令写成单行：<code>hugo --source ./ --minify --baseURL &quot;${{ steps.pages.outputs.base_url }}/&quot;</code>。</li>
+</ul>
+</li>
+<li>
+<p><strong>push/pull 失败报 <code>Failed to connect to github.com port 443</code></strong></p>
+<ul>
+<li>问题：网络或代理问题导致 git HTTPS 无法连通。</li>
+<li>解决：启用 Clash 的 TUN 模式或设置 Git 的 http/https 代理，或改用 SSH（配置 SSH key）。</li>
+</ul>
+</li>
+<li>
+<p><strong>本地与远程历史冲突、push 被拒绝</strong></p>
+<ul>
+<li>问题：远程仓库可能被 Actions 修改过或本地历史不一致。</li>
+<li>解决：最稳妥流程是 <strong>重新 clone 到新文件夹</strong>，把本地内容（<code>content/</code>、<code>static/</code>、自定义 <code>layouts/</code>）复制过来再提交；避免直接覆盖原仓库文件夹里的 <code>.git</code>。</li>
+</ul>
+</li>
+<li>
+<p><strong>RSS 链接在 footer 自动生成，但想移除</strong></p>
+<ul>
+<li>问题：主题自动通过 <code>.Site.Sections</code> 生成 feed 链接。</li>
+<li>解决：在项目 <code>layouts/partials/footer.html</code> 覆盖默认实现，删除产生 feed 的那段循环，保留 <code>footer_rows</code> 部分作为版权信息。</li>
+</ul>
+</li>
+<li>
+<p><strong>想自动为新文章注入时间与标题</strong></p>
+<ul>
+<li>解决：使用 <code>archetypes</code> 模板（<code>archetypes/default.md</code>），放 <code>date: {{ .Date }}</code> 和 <code>title: &quot;{{ replace .Name &quot;-&quot; &quot; &quot; | title }}&quot;</code>，然后通过 <code>hugo new</code> 自动生成 front matter。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><code>这篇post发布意味着，博客基本框架已经搭好。在接下来的时间，还需要大量的时间来打磨和个性化，加油吧，呱~</code></p>
+    </div>
+
+    
+</section>
+
+
+            </div>
+            <div class="side">
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/posts/">Recent Posts</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/posts/%E6%B5%81%E6%B5%AA%E7%8C%AB%E7%8C%AB%E5%BE%88%E5%8F%AF%E7%88%B1%E4%BD%86%E8%AF%B7%E4%B8%8D%E8%A6%81%E6%8A%95%E5%96%82/">流浪猫猫很可爱，但请不要投喂</a>
+            </li>
+        
+            <li>
+                <a href="/posts/%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%8D%9A%E5%AE%A2%E8%A6%81%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD/">接下来博客要实现的功能</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                    <div class="side-recent">
+    <h2 class="side-title">
+        <a href="/essays/">Recent Essays</a>
+    </h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/essays/beauty/">Beauty</a>
+            </li>
+        
+            <li>
+                <a href="/essays/%E5%86%99%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C/">写博客常用命令行</a>
+            </li>
+        
+            <li>
+                <a href="/essays/%E5%B0%8F%E5%B0%8F%E5%8D%9A%E5%AE%A2/">小小博客轻松拿下，呱!</a>
+            </li>
+        
+            <li>
+                <a href="/essays/add-picture-in-post/">Add Picture In Blog</a>
+            </li>
+        
+    </ul>
+</div>
+
+                
+                <div class="side-categories">
+    <h2>Categories</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/categories/%E9%87%8C%E7%A8%8B%E7%A2%91">里程碑(1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+                <div class="side-tags">
+    <h2>Tags</h2>
+    <hr />
+
+    <ul>
+        
+            <li>
+                <a href="/tags/git">git (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/github">github (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/hugo">hugo (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/vscode">vscode (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行 (1)</a>
+            </li>
+        
+            <li>
+                <a href="/tags/%E5%B1%95%E6%9C%9B">展望 (1)</a>
+            </li>
+        
+    </ul>
+</div>
+
+            </div>
+        </main>
+        <footer class="footer">
+    
+</footer>
+
+    </body>
+</html>

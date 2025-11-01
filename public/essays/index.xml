@@ -8,6 +8,166 @@
     <language>en</language>
     <lastBuildDate>Wed, 18 May 2022 11:19:08 +0800</lastBuildDate><atom:link href="//localhost:1313/essays/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>小小博客轻松拿下，呱!</title>
+      <link>//localhost:1313/essays/%E5%B0%8F%E5%B0%8F%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Thu, 30 Oct 2025 20:47:53 +0800</pubDate>
+      
+      <guid>//localhost:1313/essays/%E5%B0%8F%E5%B0%8F%E5%8D%9A%E5%AE%A2/</guid>
+      <description>&lt;p&gt;下面是用ai，根据整个构建博客的过程，生成的关于运用工具、实际流程、部分困难和解决方式的总结&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;一用到的工具与概念技术栈&#34;&gt;一、用到的工具与概念（技术栈） &lt;a href=&#34;#%e4%b8%80%e7%94%a8%e5%88%b0%e7%9a%84%e5%b7%a5%e5%85%b7%e4%b8%8e%e6%a6%82%e5%bf%b5%e6%8a%80%e6%9c%af%e6%a0%88&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Hugo（静态站点生成器，extended 版本用于 SCSS 支持）&lt;/li&gt;
+&lt;li&gt;VS Code（主要开发环境，尽量用 GUI 操作 Git）&lt;/li&gt;
+&lt;li&gt;Git / GitHub（代码与 Pages 托管、Actions CI）&lt;/li&gt;
+&lt;li&gt;GitHub Actions（自动构建 + 部署到 Pages：actions/configure-pages、upload-pages-artifact、deploy-pages）&lt;/li&gt;
+&lt;li&gt;Clash（用于解决本地 git HTTPS 连接的代理问题，使用 TUN 模式解决网络访问）&lt;/li&gt;
+&lt;li&gt;主题：&lt;code&gt;hugo-theme-flat&lt;/code&gt;（主题 + exampleSite）&lt;/li&gt;
+&lt;li&gt;本地预览：&lt;code&gt;hugo server -D&lt;/code&gt;（热重载）&lt;/li&gt;
+&lt;li&gt;Front Matter / archetypes（文章模板与元数据）&lt;/li&gt;
+&lt;li&gt;layouts/partials（自定义主题局部模板覆盖，例如 footer）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;二主要步骤我们实际执行的流程&#34;&gt;二、主要步骤（我们实际执行的流程） &lt;a href=&#34;#%e4%ba%8c%e4%b8%bb%e8%a6%81%e6%ad%a5%e9%aa%a4%e6%88%91%e4%bb%ac%e5%ae%9e%e9%99%85%e6%89%a7%e8%a1%8c%e7%9a%84%e6%b5%81%e7%a8%8b&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在 GitHub 建仓 &lt;code&gt;myblog&lt;/code&gt;，在本地用 VS Code 打开工作目录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;克隆或在本地初始化 Hugo 项目（&lt;code&gt;hugo new site .&lt;/code&gt;；在遇到非空目录时使用 &lt;code&gt;--force&lt;/code&gt; 或在子目录生成）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;把选好的主题 &lt;code&gt;hugo-theme-flat&lt;/code&gt; 放到 &lt;code&gt;themes/&lt;/code&gt; 下（注意主题目录名要和 &lt;code&gt;config.toml&lt;/code&gt; 里的 &lt;code&gt;theme&lt;/code&gt; 一致）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;复制主题内的 &lt;code&gt;exampleSite&lt;/code&gt; 内容到站点根（&lt;strong&gt;推荐&lt;/strong&gt;，快速得到 demo 配置、示例文章、static 资源和 config）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;调整 &lt;code&gt;config.toml&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;theme = &amp;quot;hugo-theme-flat&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将 &lt;code&gt;themesDir&lt;/code&gt; 修正为 &lt;code&gt;themes&lt;/code&gt;（不要用 &lt;code&gt;../..&lt;/code&gt; 导致路径向上跳转问题）&lt;/li&gt;
+&lt;li&gt;修改 &lt;code&gt;title&lt;/code&gt;、&lt;code&gt;description&lt;/code&gt;、&lt;code&gt;menus&lt;/code&gt;、&lt;code&gt;footer_rows&lt;/code&gt; 等字段为自己的信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本地运行预览 &lt;code&gt;hugo server -D&lt;/code&gt;，观察输出并调试：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;处理短代码缺少参数导致的错误（例如 &lt;code&gt;twitter_simple&lt;/code&gt; 报错）——删除或修正示例文章。&lt;/li&gt;
+&lt;li&gt;处理 Raw HTML、远程资源取回失败等 WARN（可忽略或通过配置关闭日志）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;主题定制：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不直接改主题源文件。若要覆盖，创建 &lt;code&gt;layouts/partials/footer.html&lt;/code&gt; 放在项目根以覆盖默认 footer；针对 RSS 链接，删除对应代码段以移除底部的 Feed 链接。&lt;/li&gt;
+&lt;li&gt;不用复制 &lt;code&gt;layouts/&lt;/code&gt; 或 &lt;code&gt;archetypes/&lt;/code&gt; 除非需要定制模板或文章模板。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置 &lt;code&gt;archetypes&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;编写 &lt;code&gt;archetypes/default.md&lt;/code&gt; / &lt;code&gt;archetypes/posts.md&lt;/code&gt; / &lt;code&gt;archetypes/essays.md&lt;/code&gt;，使用 &lt;code&gt;{{ .Date }}&lt;/code&gt;、&lt;code&gt;{{ replace .Name &amp;quot;-&amp;quot; &amp;quot; &amp;quot; | title }}&lt;/code&gt; 等占位使 &lt;code&gt;hugo new&lt;/code&gt; 自动注入元数据。&lt;/li&gt;
+&lt;li&gt;增加主题自定义字段（&lt;code&gt;weight&lt;/code&gt;、&lt;code&gt;show_comments&lt;/code&gt;、&lt;code&gt;katex&lt;/code&gt; 等）以便控制排序、评论和公式显示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本地写作流程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 &lt;code&gt;content/posts/&lt;/code&gt;（项目总结）和 &lt;code&gt;content/essays/&lt;/code&gt;（思考随笔）下创建 &lt;code&gt;.md&lt;/code&gt; 文件并填 front matter（&lt;code&gt;title&lt;/code&gt;、&lt;code&gt;date&lt;/code&gt;、&lt;code&gt;tags&lt;/code&gt;、&lt;code&gt;categories&lt;/code&gt;、&lt;code&gt;draft&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;本地预览时用 &lt;code&gt;hugo server -D&lt;/code&gt; 查看草稿。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;版本控制与部署：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把 &lt;code&gt;.github/workflows/deploy.yml&lt;/code&gt; 加入仓库，使用 GitHub Actions 自动构建与部署（我们采用 &lt;code&gt;actions/configure-pages&lt;/code&gt; + &lt;code&gt;actions/upload-pages-artifact&lt;/code&gt; + &lt;code&gt;actions/deploy-pages&lt;/code&gt; 的官方流程）。&lt;/li&gt;
+&lt;li&gt;workflow 中要注意：&lt;code&gt;--source ./&lt;/code&gt;（指向站点根），&lt;code&gt;path: ./public&lt;/code&gt;，指定 &lt;code&gt;HUGO_VERSION&lt;/code&gt; 与是否需要安装 Dart Sass（如果主题不使用 SCSS，可以删掉 Dart Sass 步骤）。&lt;/li&gt;
+&lt;li&gt;修正 workflow 中的 shell 写法（避免 &lt;code&gt;\&lt;/code&gt; 续行缩进导致 &lt;code&gt;--minify: command not found&lt;/code&gt;），最稳妥把 &lt;code&gt;hugo ...&lt;/code&gt; 写成一行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;推送与触发：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 VS Code 中 commit &amp;amp; push 到 &lt;code&gt;main&lt;/code&gt; 分支触发 Actions。Actions 成功后，Pages 从 &lt;code&gt;gh-pages&lt;/code&gt; 分支或 GitHub Pages 的 settings 自动生效，站点上线。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网络与 git 问题处理：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;遇到 &lt;code&gt;Failed to connect to github.com port 443&lt;/code&gt;，开启 Clash 的 TUN 模式或给 Git 配置 http/https 代理，亦或使用 SSH remote URL（需配置 SSH key）来解决访问 GitHub 的不稳定问题。&lt;/li&gt;
+&lt;li&gt;当本地与远程历史不同步且 push/pull 失败时，采用&lt;strong&gt;重新 clone 到新文件夹&lt;/strong&gt;然后把本地修改（内容文件）复制到新 clone 的仓库再提交的安全流程，避免直接覆盖 &lt;code&gt;.git&lt;/code&gt; 导致版本库损坏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;三我们遇到的具体困难与解决办法详列&#34;&gt;三、我们遇到的具体困难与解决办法（详列） &lt;a href=&#34;#%e4%b8%89%e6%88%91%e4%bb%ac%e9%81%87%e5%88%b0%e7%9a%84%e5%85%b7%e4%bd%93%e5%9b%b0%e9%9a%be%e4%b8%8e%e8%a7%a3%e5%86%b3%e5%8a%9e%e6%b3%95%e8%af%a6%e5%88%97&#34; class=&#34;anchor&#34;&gt;🔗&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;hugo new site .&lt;/code&gt; 报错：目录非空&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;问题：Hugo 要求空目录或使用 &lt;code&gt;--force&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;解决：用 &lt;code&gt;hugo new site . --force&lt;/code&gt; 或在子目录运行 &lt;code&gt;hugo new site site/&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;主题没被识别：module not found / 名字与目录不匹配&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;问题：下载主题时文件夹名带 &lt;code&gt;-main&lt;/code&gt; 或 config 里的 &lt;code&gt;theme&lt;/code&gt; 名称不一致，或 &lt;code&gt;themesDir&lt;/code&gt; 配置错误。&lt;/li&gt;
+&lt;li&gt;解决：把主题文件夹重命名为 &lt;code&gt;hugo-theme-flat&lt;/code&gt; 或把 &lt;code&gt;config.toml&lt;/code&gt; 中 &lt;code&gt;theme&lt;/code&gt; 改为实际文件夹名；把 &lt;code&gt;themesDir&lt;/code&gt; 改回 &lt;code&gt;themes&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;短代码与 exampleSite 的错误导致构建失败&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;问题：示例文章用旧短代码或缺少参数（例如 &lt;code&gt;twitter_simple&lt;/code&gt;），还有尝试远程抓取 Vimeo 报错。&lt;/li&gt;
+&lt;li&gt;解决：删除 example 的示例文章或修正短代码；在构建时忽略相应 warn 或提供参数；删除或替换 example content。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;PowerShell 显示 &lt;code&gt;//localhost:1313/&lt;/code&gt; 且无法直接点击&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;问题：PowerShell 输出省略 &lt;code&gt;http:&lt;/code&gt;，无法直接点击。&lt;/li&gt;
+&lt;li&gt;解决：在浏览器地址栏输入 &lt;code&gt;http://localhost:1313/&lt;/code&gt; 或在 &lt;code&gt;hugo server&lt;/code&gt; 加 &lt;code&gt;-O&lt;/code&gt; 自动打开浏览器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hugo 多行命令在 workflow 中报 &lt;code&gt;--minify: command not found&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;问题：YAML 多行续行加 &lt;code&gt;\&lt;/code&gt; 且续行前有缩进会让 shell 把参数当成新命令。&lt;/li&gt;
+&lt;li&gt;解决：把命令写成单行：&lt;code&gt;hugo --source ./ --minify --baseURL &amp;quot;${{ steps.pages.outputs.base_url }}/&amp;quot;&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;push/pull 失败报 &lt;code&gt;Failed to connect to github.com port 443&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;问题：网络或代理问题导致 git HTTPS 无法连通。&lt;/li&gt;
+&lt;li&gt;解决：启用 Clash 的 TUN 模式或设置 Git 的 http/https 代理，或改用 SSH（配置 SSH key）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;本地与远程历史冲突、push 被拒绝&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;问题：远程仓库可能被 Actions 修改过或本地历史不一致。&lt;/li&gt;
+&lt;li&gt;解决：最稳妥流程是 &lt;strong&gt;重新 clone 到新文件夹&lt;/strong&gt;，把本地内容（&lt;code&gt;content/&lt;/code&gt;、&lt;code&gt;static/&lt;/code&gt;、自定义 &lt;code&gt;layouts/&lt;/code&gt;）复制过来再提交；避免直接覆盖原仓库文件夹里的 &lt;code&gt;.git&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RSS 链接在 footer 自动生成，但想移除&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;问题：主题自动通过 &lt;code&gt;.Site.Sections&lt;/code&gt; 生成 feed 链接。&lt;/li&gt;
+&lt;li&gt;解决：在项目 &lt;code&gt;layouts/partials/footer.html&lt;/code&gt; 覆盖默认实现，删除产生 feed 的那段循环，保留 &lt;code&gt;footer_rows&lt;/code&gt; 部分作为版权信息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;想自动为新文章注入时间与标题&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解决：使用 &lt;code&gt;archetypes&lt;/code&gt; 模板（&lt;code&gt;archetypes/default.md&lt;/code&gt;），放 &lt;code&gt;date: {{ .Date }}&lt;/code&gt; 和 &lt;code&gt;title: &amp;quot;{{ replace .Name &amp;quot;-&amp;quot; &amp;quot; &amp;quot; | title }}&amp;quot;&lt;/code&gt;，然后通过 &lt;code&gt;hugo new&lt;/code&gt; 自动生成 front matter。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;code&gt;这篇post发布意味着，博客基本框架已经搭好。在接下来的时间，还需要大量的时间来打磨和个性化，加油吧，呱~&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Beauty</title>
       <link>//localhost:1313/essays/beauty/</link>
       <pubDate>Thu, 30 Oct 2025 22:37:27 +0800</pubDate>
@@ -30,6 +190,18 @@
 &lt;p&gt;And a small picture (30x20):&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./markdown-30x20.png&#34; alt=&#34;Small markdown mark&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Here is a inline markdown mark &lt;img src=&#34;./markdown-30x20.png&#34; alt=&#34;Small markdown mark&#34;&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>写博客常用命令行</title>
+      <link>//localhost:1313/essays/%E5%86%99%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+      <pubDate>Thu, 30 Oct 2025 21:24:57 +0800</pubDate>
+      
+      <guid>//localhost:1313/essays/%E5%86%99%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;发布前测试：hugo server -D&lt;/li&gt;
+&lt;li&gt;创建一个新的post：hugo new posts/名字.md&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
   </channel>
